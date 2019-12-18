@@ -22,28 +22,29 @@ require("./models/meetups");
 require("./models/users");
 require("./models/threads");
 require("./models/posts");
-require("./models/categories");
+require("./models/categories");  
 
-require("./services/passport");
+require("./services/passport"); 
 
-const meetupsRoutes = require('./routes/meetups'),
+const meetupsRoutes = require('./routes/meetups'), 
       usersRoutes = require('./routes/users'),
-      threadsRoutes = require('./routes/threads'),
+      threadsRoutes = require('./routes/threads'), 
       postsRoutes = require('./routes/posts'),
       categoriesRoutes = require('./routes/categories');
 
-mongoose.connect(config.DB_URI, { useNewUrlParser: true })
+mongoose.connect(config.DB_URI, { useNewUrlParser: true }) 
   .then(() => console.log('DB Connected!'))
-  .catch(err => console.log(err));
+  .catch(err => console.log(err)); 
+  
 
 const app = express();
 const server = require('http').createServer(app)
 const io = require('socket.io')(server, {pingTimeout: 60000})
 
-require('./socket')(io)
+require('./socket')(io) 
 
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); 
 
 //Only for session authentication
 //notify express for a session
